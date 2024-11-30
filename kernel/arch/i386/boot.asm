@@ -33,6 +33,7 @@ mboot:
 
 [GLOBAL start]                  ; Kernel entry point.
 [EXTERN main]                   ; This is the entry point of our C code
+[EXTERN _init]
 
 start:
     ; Load multiboot information:
@@ -41,6 +42,7 @@ start:
 
     ; Execute the kernel:
     cli                         ; Disable interrupts.
+    call _init
     call main                   ; call our main() function.
     jmp $                       ; Enter an infinite loop, to stop the processor
                                 ; executing whatever rubbish is in the memory

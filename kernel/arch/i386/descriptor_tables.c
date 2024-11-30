@@ -5,6 +5,8 @@
 //                       Rewritten for JamesM's kernel development tutorials.
 //
 
+#include <string.h>
+
 #include <kernel/common.h>
 #include <kernel/descriptor_tables.h>
 #include <kernel/isr.h>

@@ -4,6 +4,8 @@
 #ifndef PAGING_H
 #define PAGING_H
 
+#include <string.h>
+
 #include <kernel/common.h>
 #include <kernel/isr.h>
 
