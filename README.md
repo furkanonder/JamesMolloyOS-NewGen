@@ -19,7 +19,7 @@ James Molloy's tutorial has known bugs, which are documented [here](https://wiki
 - [X] Problem: `Not using libgcc`
 - [ ] Problem: `Not setting a stack`
 - [ ] Problem: `main function`
-- [ ] Problem: `Data types`
+- [X] Problem: `Data types`
 - [ ] Problem: `Inline Assembly`
 - [X] Problem: `Missing functions`
 - [ ] Problem: `Interrupt handlers corrupt interrupted state`

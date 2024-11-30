@@ -2,6 +2,7 @@
 //             Written for JamesM's kernel development tutorials.
 
 #include <string.h>
+#include <stdint.h>
 
 #include <kernel/initrd.h>
 
@@ -14,18 +15,18 @@ int nroot_nodes;                    // Number of file nodes.
 
 struct dirent dirent;
 
-static u32int initrd_read(fs_node_t *node, u32int offset, u32int size, u8int *buffer)
+static uint32_t initrd_read(fs_node_t *node, uint32_t offset, uint32_t size, uint8_t *buffer)
 {
     initrd_file_header_t header = file_headers[node->inode];
     if (offset > header.length)
         return 0;
     if (offset+size > header.length)
         size = header.length-offset;
-    memcpy(buffer, (u8int*) (header.offset+offset), size);
+    memcpy(buffer, (uint8_t*) (header.offset+offset), size);
     return size;
 }
 
-static struct dirent *initrd_readdir(fs_node_t *node, u32int index)
+static struct dirent *initrd_readdir(fs_node_t *node, uint32_t index)
 {
     if (node == initrd_root && index == 0)
     {
@@ -56,7 +57,7 @@ static fs_node_t *initrd_finddir(fs_node_t *node, char *name)
     return 0;
 }
 
-fs_node_t *initialise_initrd(u32int location)
+fs_node_t *initialise_initrd(uint32_t location)
 {
     // Initialise the main and file header pointers and populate the root directory.
     initrd_header = (initrd_header_t *)location;

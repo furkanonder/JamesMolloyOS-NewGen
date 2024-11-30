@@ -1,6 +1,8 @@
 // syscall.c -- Defines the implementation of a system call system.
 //              Written for JamesM's kernel development tutorials.
 
+#include <stdint.h>
+
 #include <kernel/syscall.h>
 #include <kernel/isr.h>
 
@@ -18,7 +20,7 @@ static void *syscalls[3] =
     &monitor_write_hex,
     &monitor_write_dec,
 };
-u32int num_syscalls = 3;
+uint32_t num_syscalls = 3;
 
 void initialise_syscalls()
 {

@@ -1,29 +1,31 @@
 // common.c -- Defines some global functions.
 //             From JamesM's kernel development tutorials.
 
+#include <stdint.h>
+
 #include <kernel/common.h>
 
 // Write a byte out to the specified port.
-void outb(u16int port, u8int value)
+void outb(uint16_t port, uint8_t value)
 {
     asm volatile ("outb %1, %0" : : "dN" (port), "a" (value));
 }
 
-u8int inb(u16int port)
+uint8_t inb(uint16_t port)
 {
-    u8int ret;
+    uint8_t ret;
     asm volatile("inb %1, %0" : "=a" (ret) : "dN" (port));
     return ret;
 }
 
-u16int inw(u16int port)
+uint16_t inw(uint16_t port)
 {
-    u16int ret;
+    uint16_t ret;
     asm volatile ("inw %1, %0" : "=a" (ret) : "dN" (port));
     return ret;
 }
 
-extern void panic(const char *message, const char *file, u32int line)
+extern void panic(const char *message, const char *file, uint32_t line)
 {
     // We encountered a massive problem and have to stop.
     asm volatile("cli"); // Disable interrupts.
@@ -39,7 +41,7 @@ extern void panic(const char *message, const char *file, u32int line)
     for(;;);
 }
 
-extern void panic_assert(const char *file, u32int line, const char *desc)
+extern void panic_assert(const char *file, uint32_t line, const char *desc)
 {
     // An assertion failed, and we have to panic.
     asm volatile("cli"); // Disable interrupts.

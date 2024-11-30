@@ -1,6 +1,8 @@
 // main.c -- Defines the C-code kernel entry point, calls initialisation routines.
 //           Made for JamesM's tutorials <www.jamesmolloy.co.uk>
 
+#include <stdint.h>
+
 #include <kernel/monitor.h>
 #include <kernel/descriptor_tables.h>
 #include <kernel/timer.h>
@@ -11,10 +13,10 @@
 #include <kernel/task.h>
 #include <kernel/syscall.h>
 
-extern u32int placement_address;
-u32int initial_esp;
+extern uint32_t placement_address;
+uint32_t initial_esp;
 
-int main(struct multiboot *mboot_ptr, u32int initial_stack)
+int main(struct multiboot *mboot_ptr, uint32_t initial_stack)
 {
 	initial_esp = initial_stack;
 	// Initialise all the ISRs and segmentation
@@ -28,8 +30,8 @@ int main(struct multiboot *mboot_ptr, u32int initial_stack)
 
 	// Find the location of our initial ramdisk.
 	ASSERT(mboot_ptr->mods_count > 0);
-	u32int initrd_location = *((u32int*)mboot_ptr->mods_addr);
-	u32int initrd_end = *(u32int*)(mboot_ptr->mods_addr+4);
+	uint32_t initrd_location = *((uint32_t*)mboot_ptr->mods_addr);
+	uint32_t initrd_end = *(uint32_t*)(mboot_ptr->mods_addr+4);
 	// Don't trample our module with placement accesses, please!
 	placement_address = initrd_end;
 
@@ -70,7 +72,7 @@ int main(struct multiboot *mboot_ptr, u32int initial_stack)
 //        {
 //            monitor_write("\n\t contents: \"");
 //            char buf[256];
-//            u32int sz = read_fs(fsnode, 0, 256, buf);
+//            uint32_t sz = read_fs(fsnode, 0, 256, buf);
 //            int j;
 //            for (j = 0; j < sz; j++)
 //                monitor_put(buf[j]);

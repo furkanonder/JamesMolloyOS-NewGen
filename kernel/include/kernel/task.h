@@ -6,6 +6,8 @@
 #ifndef TASK_H
 #define TASK_H
 
+#include <stdint.h>
+
 #include <kernel/common.h>
 #include <kernel/paging.h>
 
@@ -15,10 +17,10 @@
 typedef struct task
 {
     int id;                // Process ID.
-    u32int esp, ebp;       // Stack and base pointers.
-    u32int eip;            // Instruction pointer.
+    uint32_t esp, ebp;       // Stack and base pointers.
+    uint32_t eip;            // Instruction pointer.
     page_directory_t *page_directory; // Page directory.
-    u32int kernel_stack;   // Kernel stack location.
+    uint32_t kernel_stack;   // Kernel stack location.
     struct task *next;     // The next task in a linked list.
 } task_t;
 
@@ -33,7 +35,7 @@ void task_switch();
 int fork();
 
 // Causes the current process' stack to be forcibly moved to a new location.
-void move_stack(void *new_stack_start, u32int size);
+void move_stack(void *new_stack_start, uint32_t size);
 
 // Returns the pid of the current process.
 int getpid();

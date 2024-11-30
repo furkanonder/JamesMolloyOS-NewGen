@@ -1,11 +1,13 @@
 // fs.c -- Defines the interface for and structures relating to the virtual file system.
 //         Written for JamesM's kernel development tutorials.
 
+#include <stdint.h>
+
 #include <kernel/fs.h>
 
 fs_node_t *fs_root = 0; // The root of the filesystem.
 
-u32int read_fs(fs_node_t *node, u32int offset, u32int size, u8int *buffer)
+uint32_t read_fs(fs_node_t *node, uint32_t offset, uint32_t size, uint8_t *buffer)
 {
     // Has the node got a read callback?
     if (node->read != 0)
@@ -14,7 +16,7 @@ u32int read_fs(fs_node_t *node, u32int offset, u32int size, u8int *buffer)
         return 0;
 }
 
-u32int write_fs(fs_node_t *node, u32int offset, u32int size, u8int *buffer)
+uint32_t write_fs(fs_node_t *node, uint32_t offset, uint32_t size, uint8_t *buffer)
 {
     // Has the node got a write callback?
     if (node->write != 0)
@@ -23,7 +25,7 @@ u32int write_fs(fs_node_t *node, u32int offset, u32int size, u8int *buffer)
         return 0;
 }
 
-void open_fs(fs_node_t *node, u8int read, u8int write)
+void open_fs(fs_node_t *node, uint8_t read, uint8_t write)
 {
     // Has the node got an open callback?
     if (node->open != 0)
@@ -37,7 +39,7 @@ void close_fs(fs_node_t *node)
         return node->close(node);
 }
 
-struct dirent *readdir_fs(fs_node_t *node, u32int index)
+struct dirent *readdir_fs(fs_node_t *node, uint32_t index)
 {
     // Is the node a directory, and does it have a callback?
     if ( (node->flags&0x7) == FS_DIRECTORY &&
