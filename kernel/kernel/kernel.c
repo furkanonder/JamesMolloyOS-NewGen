@@ -1,4 +1,4 @@
-// main.c -- Defines the C-code kernel entry point, calls initialisation routines.
+// kernel.c -- Defines the C-code kernel entry point, calls initialisation routines.
 //           Made for JamesM's tutorials <www.jamesmolloy.co.uk>
 
 #include <stdint.h>
@@ -16,7 +16,7 @@
 extern uint32_t placement_address;
 uint32_t initial_esp;
 
-int main(struct multiboot *mboot_ptr, uint32_t initial_stack)
+int kernel_main(struct multiboot *mboot_ptr, uint32_t initial_stack)
 {
 	initial_esp = initial_stack;
 	// Initialise all the ISRs and segmentation

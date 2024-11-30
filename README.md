@@ -18,7 +18,7 @@ James Molloy's tutorial has known bugs, which are documented [here](https://wiki
 - [X] Problem: `CFLAGS`
 - [X] Problem: `Not using libgcc`
 - [ ] Problem: `Not setting a stack`
-- [ ] Problem: `main function`
+- [X] Problem: `main function`
 - [X] Problem: `Data types`
 - [X] Problem: `Inline Assembly` (Removed inline assembly for I/O operations)
 - [X] Problem: `Missing functions`
