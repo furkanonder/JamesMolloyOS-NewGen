@@ -29,7 +29,7 @@ James Molloy's tutorial has known bugs, which are documented [here](https://wiki
 - [ ] Problem: `cli and sti in interrupt handlers`
 - [ ] Problem: `kmalloc isn't properly aligned`
 - [ ] Problem: `Paging Code`
-- [ ] Problem: `Heap Code`
+- [X] Problem: `Heap Code`
 - [ ] Problem: `VFS Code`
 - [ ] Problem: `multiboot.h`
 - [ ] Problem: `Multitasking`
