@@ -20,7 +20,7 @@ James Molloy's tutorial has known bugs, which are documented [here](https://wiki
 - [ ] Problem: `Not setting a stack`
 - [ ] Problem: `main function`
 - [X] Problem: `Data types`
-- [ ] Problem: `Inline Assembly`
+- [X] Problem: `Inline Assembly` (Removed inline assembly for I/O operations)
 - [X] Problem: `Missing functions`
 - [ ] Problem: `Interrupt handlers corrupt interrupted state`
 - [ ] Problem: `ISR 17 and 21 have error codes`
